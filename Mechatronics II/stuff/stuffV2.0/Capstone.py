@@ -47,13 +47,13 @@ def triangledraw(color, size, x, y):
      t.penup()
 
 
-
+t.hideturtle()
 draw = (('cirlce', 'red', 100, 50, 50),('other', 'yellow', 100, 10, 0, 12))
 t.speed(0)
-circledraw('yellow', 100, 10, 10)
-squaredraw('green', 100, -40, -40)
-stardraw('black', 100, 50, 0)
-triangledraw('violet', 100, 100, 20)
-
-
+for ii in range(13):
+    for i in range(15):
+        squaredraw('red', 100, (100*i)-600, (100*ii)-600)
+for ii in range(5):
+    for i in range(10):
+        stardraw('blue', 40, (50*i)-500, (-50*ii)+400)
 lol = input("Press ENTER to quit")
