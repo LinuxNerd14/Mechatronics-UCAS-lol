@@ -124,7 +124,11 @@ if yes == 'y':
         draw.append(item)
 else:
     pass
-
+fast = input("Fast mode?: ")
+if fast == 'Yes Please':
+    t.tracer(False)
+else:
+    pass
 # reads the great list and depending on the number on the front of the nested tuiple it will draw a certain shape and pass the parameters for it in
 # 1 == square, 2 == star, 3 == triangle, 4 == cirlce
 #if the first var in x index is a certain value it will make a certain shape. It then takes the rest of the parameters into the appropriate function
