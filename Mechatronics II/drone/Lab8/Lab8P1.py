@@ -47,6 +47,9 @@ tello.move_up(100)
 tello.rotate_counter_clockwise(180) #rotate left 180
 tello.land()
     """
+    
+    
+"""
 from djitellopy import Tello
 import time
 x1=(70,70,70,70)
@@ -59,11 +62,62 @@ s=(60,60,60,60)
 #listy = zip(x1, y1, z1, x2, y2, z2, s)
 tello = Tello()         #initiate tello drone
 tello.connect(False)    #connect in an unreliable way
+time.sleep(1)
 tello.takeoff()         #take off
-for i in zip(x1, y1, z1, x2, y2, z2, s):
-    X1, Y1, Z1, X2, Y2, Z2, S = i
-    time.sleep(1)
-    tello.curve_xyz_speed(X1, Y1, Z1, X2, Y2, Z2, S)
-print("HERE")
+for i in zip(x1, y1, z1, x2, y2, z2, s):    #loope over zip while zipping it
+    X1, Y1, Z1, X2, Y2, Z2, S = i   #unpack the zip that was just done
+    time.sleep(3.5) #give the drone time to figure itself out
+    tello.curve_xyz_speed(X1, Y1, Z1, X2, Y2, Z2, S)    #excecute curve based on tuple
+print("HERE")   #Land mark for progress
+time.sleep(1)   #wait
+tello.land()    #land
+"""
+from djitellopy import Tello
+import time
+tello = Tello()
+def windup():
+    for i in range(6):
+        time.sleep(1)
+        tello.move_forward(100)
+        time.sleep(1)
+        tello.move_up(20)
+        time.sleep(1)
+        tello.move_left(100)
+        time.sleep(1)
+        tello.move_up(20)
+        time.sleep(1)
+        tello.move_backward(100)
+        time.sleep(1)
+        tello.move_up(20)
+        time.sleep(1)
+        tello.right(100)
+        time.sleep(1)
+        tello.move_up(20)
+        time.sleep(1)
+def winddown():
+    for i in range(6):
+        time.sleep(1)
+        tello.move_forward(100)
+        time.sleep(1)
+        tello.move_down(20)
+        time.sleep(1)
+        tello.move_left(100)
+        time.sleep(1)
+        tello.move_down(20)
+        time.sleep(1)
+        tello.move_backward(100)
+        time.sleep(1)
+        tello.move_down(20)
+        time.sleep(1)
+        tello.right(100)
+        time.sleep(1)
+        tello.move_down(20)
+        time.sleep(1)
+tello.connect(False)    #connect in an unreliable way
+time.sleep(1)
+tello.takeoff()         #take off
+time.sleep(1)
+windup()
+winddown()
 time.sleep(1)
 tello.land()
