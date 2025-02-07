@@ -72,52 +72,68 @@ print("HERE")   #Land mark for progress
 time.sleep(1)   #wait
 tello.land()    #land
 """
+"""
 from djitellopy import Tello
 import time
 tello = Tello()
-def windup():
-    for i in range(6):
+time.sleep(1)
+def windup():                       # moves up slowley whilst drawing a a square: repeats 6 times
+    for i in range(3):
+        time.sleep(3)               #sleep before every command to the drone
+        tello.move_forward(50*(i+1))     #squre draw
         time.sleep(1)
-        tello.move_forward(100)
+        tello.move_up(20)           #move up
         time.sleep(1)
-        tello.move_up(20)
+        tello.move_left(50*(i+1))        #square draw
         time.sleep(1)
-        tello.move_left(100)
+        tello.move_up(20)           #move up
         time.sleep(1)
-        tello.move_up(20)
+        tello.move_back(50*(i+1))    #square draw
         time.sleep(1)
-        tello.move_backward(100)
+        tello.move_up(20)           #move up
         time.sleep(1)
-        tello.move_up(20)
+        tello.move_right(50*(i+1))            #square draw
         time.sleep(1)
-        tello.right(100)
+        tello.move_up(20)           #move up
         time.sleep(1)
-        tello.move_up(20)
+def winddown():                 #does the same thing as "windup" but instead of move_up commands does move_down commands
+    for i in range(3):
         time.sleep(1)
-def winddown():
-    for i in range(6):
-        time.sleep(1)
-        tello.move_forward(100)
-        time.sleep(1)
-        tello.move_down(20)
-        time.sleep(1)
-        tello.move_left(100)
+        tello.move_forward(50*(i+1))
         time.sleep(1)
         tello.move_down(20)
         time.sleep(1)
-        tello.move_backward(100)
+        tello.move_left(50*(i+1))
         time.sleep(1)
         tello.move_down(20)
         time.sleep(1)
-        tello.right(100)
+        tello.move_back(50*(i+1))
+        time.sleep(1)
+        tello.move_down(20)
+        time.sleep(1)
+        tello.move_right(50*(i+1))
         time.sleep(1)
         tello.move_down(20)
         time.sleep(1)
 tello.connect(False)    #connect in an unreliable way
-time.sleep(1)
+time.sleep(3)
 tello.takeoff()         #take off
-time.sleep(1)
+time.sleep(2)
 windup()
 winddown()
+time.sleep(1)
+tello.land()
+    """
+from djitellopy import Tello
+import time
+tello = Tello()
+time.sleep(1)
+tello.connect(False)
+time.sleep(3)
+tello.takeoff()
+time.sleep(3)
+tello.curve_xyz_speed(100, 100, 0, 0, 40, 0, 60)    #excecute curve
+time.sleep(3)
+tello.curve_xyz_speed(20, 20, 0, 0, 40, 0, 60)
 time.sleep(1)
 tello.land()
