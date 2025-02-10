@@ -132,8 +132,10 @@ tello.connect(False)
 time.sleep(3)
 tello.takeoff()
 time.sleep(3)
-tello.curve_xyz_speed(100, 100, 0, 0, 40, 0, 60)    #excecute curve
+#tello.curve_xyz_speed(100, 100, 0, 0, 40, 0, 60)    #excecute curve
+#time.sleep(3)
+tello.curve_xyz_speed(120, 120, 0, 0, 50, 0, 60)
 time.sleep(3)
-tello.curve_xyz_speed(20, 20, 0, 0, 40, 0, 60)
+tello.curve_xyz_speed(-120, 120, 0, 0, 50, 0, 60)
 time.sleep(1)
 tello.land()
