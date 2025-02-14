@@ -51,7 +51,7 @@ time.sleep(2)
 wait = input("In it deez nuts: ")
 
 for i in range(4):              #draw square
-    time.sleep(1)
+    time.sleep(1) 
     t.move_forward(100)
     time.sleep(1)
     t.rotate_counter_clockwise(90)
